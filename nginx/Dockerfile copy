@@ -1,0 +1,12 @@
+FROM nginx:1.15-alpine
+LABEL version="1.0.0" description="Container Nginx e NodeJS" maintainer="wagnersodre"
+
+WORKDIR /app
+COPY ./start.sh /start.sh
+COPY ./default.conf /etc/nginx/conf.d/default.conf
+
+ENV PORT=3000
+EXPOSE 80
+
+CMD [ "/start.sh" ]
+
