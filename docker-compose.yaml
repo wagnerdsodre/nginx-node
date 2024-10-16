@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+    app:
+      build: 
+        context: ./node
+      container_name: app      
+      networks:
+        - node-networks
+      volumes:
+        - ./node:/usr/src/app
+      tty: true
+      ports:
+       - "3000:3000"
+      depends_on:
+       #- db
+       - nginx
+      
+    nginx:
+      build:
+          context: ./nginx
+          dockerfile: dockerfile
+      image: wagnerdsodre/nginx
+      container_name: nginx
+      networks:
+        - node-networks 
+
+networks:
+  node-networks:
+    driver: bridge
+
+
+
+        
+      
+      
+
+    
+      
+
+    
